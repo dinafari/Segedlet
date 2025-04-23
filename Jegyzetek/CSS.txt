@@ -1,0 +1,143 @@
+**CSS Áttekintés**
+
+### 1. **CSS fogalma**
+CSS (Cascading Style Sheets) egy stílusleíró nyelv, amelyet a HTML dokumentumok megjelenítésének formázására használunk. Segít elkülöníteni a tartalmat (HTML) a megjelenítéstől (CSS), így rugalmasabbá és hatékonyabbá teszi a weboldalak készítését.
+
+### 2. **CSS beillesztési módjai**
+
+1. **Inline CSS:**
+   - Egy adott HTML elem stílusának beállítása a `style` attribútummal.
+   - Használata: ha csak egyetlen elem formázását kell módosítani.
+
+   ```html
+   <p style="color: red; font-size: 16px;">Ez egy példa szöveg.</p>
+   ```
+
+2. **Internal (Belső) CSS:**
+   - A HTML dokumentum `<head>` részében lévő `<style>` blokkban helyezkedik el.
+   - Használata: ha csak az adott oldalra érvényes stílust szeretnénk.
+
+   ```html
+   <head>
+     <style>
+       p {
+         color: blue;
+         font-size: 18px;
+       }
+     </style>
+   </head>
+   <body>
+     <p>Ez egy bélso CSS példa.</p>
+   </body>
+   ```
+
+3. **External (Külső) CSS:**
+   - Különálló .css fájlban tárolt stílusok, amelyeket a `<link>` tag segítségével kapcsolunk a HTML-hez.
+   - Használata: nagyobb projektek esetén, ahol sok oldal használja ugyanazt a stílust.
+
+   **style.css**
+   ```css
+   h1 {
+     color: green;
+     text-align: center;
+   }
+   ```
+
+   **index.html**
+   ```html
+   <head>
+     <link rel="stylesheet" href="style.css">
+   </head>
+   <body>
+     <h1>Ez egy külső CSS példa.</h1>
+   </body>
+   ```
+
+### 3. **CSS Szelektorok**
+
+- **Elem szelektor**: HTML elemek kiválasztására.
+  ```css
+  p {
+    color: purple;
+  }
+  ```
+
+- **Osztály szelektor (`.`)**: Azonos nevű osztállyal rendelkező elemek kiválasztására.
+  ```css
+  .kiemelt {
+    font-weight: bold;
+  }
+  ```
+
+- **Azonosító szelektor (`#`)**: Egyedi azonosítóval rendelkező elem kiválasztására.
+  ```css
+  #focim {
+    font-size: 24px;
+  }
+  ```
+
+- **Csoportosítás**: Több elem egyszerre történő formázása.
+  ```css
+  h1, h2, p {
+    margin: 0;
+  }
+  ```
+
+### 4. **CSS Box Model**
+
+A box model minden HTML elemet egy döbozként kezel. Részei:
+
+- **Content** (Tartalom): Az elem tartalma (szöveg, kép, stb.).
+- **Padding**: Belső térkitöltés a tartalom és a határ között.
+- **Border**: Az elem határvonala.
+- **Margin**: Külső térkitöltés az elem körül.
+
+```css
+.box {
+  width: 200px;
+  height: 100px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 20px;
+}
+```
+
+### 5. **CSS Pozicionálás**
+
+- **static**: Alapértelmezett, a dokumentum áramlásában elfoglalt hely.
+- **relative**: Az elem az eredeti pozíciójához képest elmozdítható.
+- **absolute**: A legközelebbi relative/absolute/ fixed szülőhöz képest pozicionált.
+- **fixed**: Az ablakhoz rögzített pozíció.
+
+```css
+.fixed-box {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+```
+
+### 6. **Reszponzív Design**
+
+A weboldal különböző képernyőméretekhez való igazítása.
+
+**Media Query:**
+```css
+@media (max-width: 600px) {
+  body {
+    background-color: lightgray;
+  }
+}
+```
+
+### 7. **CSS Fontosabb Tulajdonságok**
+
+- **color**: Szöveg színe
+- **background**: Háttér szín vagy kép
+- **font-family**: Betűtípus
+- **font-size**: Betűméret
+- **margin**: Külső térkitöltés
+- **padding**: Belső térkitöltés
+- **border**: Szegély
+- **display**: Megjelenítési mód (block, inline, flex stb.)
+

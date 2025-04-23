@@ -1,0 +1,104 @@
+
+//Beszúrsz egy új adatot (objektumot) a virágok kollekcióba
+        await viragokcollection.insertOne({neve:"Bazsarózsa",ara:2000,szarmazas:"Magyarország",keszletenE:false,});
+        console.log('A virágok kollekcióba Bazarózsa feltöltve!');
+
+        // A Bazsarózsa árának módosítása $set-el:
+        await viragokcollection.updateOne({neve:"Bazsarózsa"},{$set:{ara:500} } );
+        console.log('A Bazsarózsa ára módosítva 500-ra!');
+
+        //Hollandirózsa törlése:
+
+        await viragokcollection.deleteOne({neve:"Hollandrózsa"});
+        console.log('Hollandrózsa törlése');
+
+        //Magyar szarmazású virágok törlése:
+
+        await viragokcollection.deleteMany({szarmazas:"Magyarország"});
+        console.log('A Magyar származású virágok törlése');
+
+
+
+        //Virágok növekvő sorrendben:
+
+        const virnov =await viragokcollection.find({}).sort({ara:1}).toArray();
+        console.log("A virágok nővekvő sorrendben",virnov);
+
+        //Virágok csökkenő sorrendben:
+
+        const vircsokk = await viragokcollection.find({}).sort({ara:-1}).toArray();
+        console.log("A virágok csökkenő sorrendben",vircsokk);
+
+        // Egy Brazíliai virag megtalálása a kollekcióból :
+
+        const viragBraz = await viragokcollection.findOne({szarmazas:"Brazília"});
+        console.log("Egy Brazíliai virag megtalálása a virágok kollekcióból ",viragBraz);
+
+
+        //Több adat feltöltése a fak kollekcióba:
+
+        await fakcollection.insertMany([
+            {neve:"Majomkenyérfa",ara:48000,szarmazas:"Afrika",keszletenE:true},
+            {neve:"Baobabfa" ,ara:56000,szarmazas:"Afrika",keszletenE:false},
+        ]);
+        console.log('A két Afrikai fa adatainak feltöltése sikeres a fák kollekciba!');
+
+        //Több adat módosítása a fák kollekción belül Az Afrrikai származású fák árára:
+
+        await fakcollection.updateMany(
+            {szarmazas:"Afrika"},
+            { $set:{ara:100000}}
+
+
+        );
+        console.log('Afrikai fák ára módosítva 100000-re!');
+
+       
+
+       // await viragokcollection.drop();
+       //console.log('A virágok kollekció teljes végleges törlése!!!')
+
+
+
+       // "A készleten lévő növények a rendelések kollekcióból":
+
+        const keszl= await rendelesekcollection.find({keszletenE:true}).toArray();
+        console.log("A készleten lévő növények a rendelések kollekcióból",keszl);
+
+        //"Nevük és áruk kiiratása növekvő sorrendben limitálva 3-ra" :
+
+
+        const nevearalimit= await rendelesekcollection.find({},{projection:{nev:1,ar:1,_id:0 }}).sort({ar:1}).limit(3).toArray();
+        console.log("Nevük és áruk kiiratása növekvő sorrendben limitálva 3-ra",nevearalimit);
+
+
+        const brazil= await gyogynovenyekcollection.find({szarmazasa:"Brazília"}).toArray();
+        console.log('Brazil gyógynövények', brazil);
+
+
+        const nevBazsSzarmOlasz =  await fuszernovenyekcollection.find({
+            $and:[
+                {neve:"bazsalikom"},
+                {szarmazasa:"Olaszország"}
+            ]
+
+        }).toArray();
+        console.log("Neve Bazsalikom és származása Olszország",nevBazsSzarmOlasz);
+
+        const nevArnvagyIzl= await gyogynovenyekcollection.find({
+            $or:[
+                {neve:"árnika"},
+                {szarmazasa:"Izland"}
+
+            ]
+        }).toArray();
+        console.log("Neve Árnika vagy származasa Izland.", nevArnvagyIzl);
+
+
+        //Az áruk hatezer alatt van csökkenő sorrendben limitálva kettő találatra:
+
+        const hatezeralatt =await collection.find({ara:{$lt:6000}}).sort({ara:-1}).limit(2).toArray();
+        console.log("Hatezer alatt van az áruk csökkenő sorrendben limitálva kettő találatra",hatezeralatt);
+
+
+

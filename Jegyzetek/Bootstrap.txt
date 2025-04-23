@@ -1,0 +1,162 @@
+# Bootstrap 5 Alapok
+
+## Mi az a Bootstrap?
+A **Bootstrap** egy nyílt forráskódú CSS keretrendszer, amelyet a responsív (mobilbarát) és egységes kinézetű weboldalak gyors fejlesztésére használnak. A Twitter fejlesztette ki, és mára az egyik legnépszerűbb frontend keretrendszer.
+
+## Bootstrap 5 Újdonságai
+- **jQuery-mentesség**: A Bootstrap 5 nem használja a jQuery-t, tisztán JavaScript-alapú.
+- **Jobb teljesítmény**: Gyorsabb betöltési idők.
+- **Új segédosztályok**: Például: `gx-*` (vízszintes térköz), `gy-*` (függőleges térköz).
+- **Flexbox és CSS Grid támogatás**: Egyszerűbb és rugalmasabb elrendezések.
+- **Dark Mode támogatás** (alapból nem aktív, de testreszabható).
+
+## Bootstrap 5 Alapstruktúra
+
+```html
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap 5 Példa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Üdv a Bootstrap 5 világában!</h1>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+```
+</body>
+</html>
+```
+
+## Bootstrap 5 Alapfogalmak
+
+### 1. **Grid Rendszer**
+A Bootstrap 5 **12 oszlopos rugalmas rácsrendszert** használ. A `row` osztály egy sort hoz létre, a `col` osztály pedig oszlopokat határoz meg. Az oszlopok szélességét a `col-*` formátummal lehet beállítani (ahol `*` 1 és 12 közötti érték lehet).
+
+#### Példa oszlopokra:
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-6">Bal oldal (6 oszlop)</div>
+        <div class="col-6">Jobb oldal (6 oszlop)</div>
+    </div>
+</div>
+```
+
+### 2. **Reszponzív oszlopok**
+A Bootstrap 5 lehetőséget biztosít arra, hogy különböző képernyőméretekhez igazítsd az oszlopok szélességét. A méretjelölések:
+
+- `sm` – Kis képernyők (>=576px)
+- `md` – Közepes képernyők (>=768px)
+- `lg` – Nagy képernyők (>=992px)
+- `xl` – Extra nagy képernyők (>=1200px)
+- `xxl` – Nagyon nagy képernyők (>=1400px)
+
+#### Példa reszponzív oszlopokra:
+```html
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 col-md-6 col-lg-8">Reszponzív oszlop</div>
+        <div class="col-sm-8 col-md-6 col-lg-4">Másik oszlop</div>
+    </div>
+</div>
+```
+
+### 3. **Automatikus szélesség (Auto Layout)**
+Ha nem adsz meg konkrét szélességet, az oszlopok automatikusan osztják el a rendelkezésre álló helyet.
+
+```html
+<div class="container">
+    <div class="row">
+        <div class="col">Automatikus szélesség</div>
+        <div class="col">Automatikus szélesség</div>
+    </div>
+</div>
+```
+
+### 4. **Igazítás és elrendezés**
+- **Vertikális igazítás**: `align-items-start`, `align-items-center`, `align-items-end`
+- **Horizontális igazítás**: `justify-content-start`, `justify-content-center`, `justify-content-end`, `justify-content-between`, `justify-content-around`
+
+#### Példa vertikális és horizontális igazításra:
+```html
+<div class="container">
+    <div class="row align-items-center justify-content-center">
+        <div class="col-4">Középre igazított oszlop</div>
+    </div>
+</div>
+```
+
+### 5. **Térközök (Spacing)**
+Térközök beállítása: `m` (margin), `p` (padding).
+
+Formátum: `m/p-{oldal}-{érték}`
+
+Példa:
+```html
+<div class="p-3 m-4">Térköz példa</div>
+```
+
+### 6. **Tipográfia**
+- `h1` - `h6`: Címsorok.
+- `lead`: Kiemelt szöveg.
+- `text-center`, `text-start`, `text-end`: Szövegigazítás.
+
+### 7. **Gombok (Buttons)**
+
+```html
+<button class="btn btn-primary">Elsődleges gomb</button>
+<button class="btn btn-danger">Veszély gomb</button>
+```
+
+### 8. **Űrlapok**
+
+```html
+<form>
+    <label for="email" class="form-label">Email:</label>
+    <input type="email" id="email" class="form-control" placeholder="Add meg az emailed">
+</form>
+```
+
+### 9. **Navigáció (Navbar)**
+
+```html
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Logo</a>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Főoldal</a></li>
+        </ul>
+    </div>
+</nav>
+```
+
+## Bootstrap 5 Legfontosabb Osztályok
+
+| Osztály              | Funkció                   |
+|----------------------|---------------------------|
+| `.container`         | Fix szélességű konténer   |
+| `.container-fluid`   | Teljes szélességű konténer|
+| `.row`               | Sor létrehozása           |
+| `.col` vagy `.col-*` | Oszlop létrehozása        |
+| `.btn`               | Gombok stílusozása        |
+| `.form-control`      | Input mezők stílusozása   |
+| `.text-*`            | Szövegigazítás            |
+
+## Bootstrap 5 Használata
+A Bootstrap 5 használatához a következő CDN-eket kell betölteni:
+
+CSS betöltése a `<head>` részben:
+```html
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+```
+
+JavaScript betöltése a `<body>` végén:
+```html
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+```
+

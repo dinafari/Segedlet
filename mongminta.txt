@@ -1,0 +1,69 @@
+const {MongoClient} =require('mongodb');
+
+const url ='';
+
+const client =new MongoClient(url);
+
+async function connectDB(){
+    try{
+        await client.connect();
+        console.log('A kapcsolódás sikeres a MongoDB-hez!');
+
+        const db = client.db('Bolt');
+        const szappanokcollection =  db.collection('szappanok');
+        const testapolokcollection = db.collection('testápolók');
+
+        await szappanokcollection.deleteMany({});
+        console.log('A szappnok collekció kiürítése sikeres!');
+
+
+        await testapolokcollection.deleteMany({});
+        console.log('A testápolók collekció kiűrítése sikeres!')
+
+        const szappanok =[
+            {neve:"Nivea",szarmazas:"Németország",ara:800, keszletenE:true},
+            {neve:"Dove",szarmazas:"USA",ara:1600, keszletenE:true},
+            {neve:"Palmolive",szarmazas:"Franciaország",ara:1300, keszletenE:false},
+            {neve:"Safeguard",szarmazas:"Anglia",ara:1100, keszletenE:false},
+            
+        ];
+
+        await szappanokcollection.insertMany(szappanok);
+        console.log('A szappanokcollekció beszúrása sikeres!');
+
+
+
+        
+
+        
+        const testapolok =[
+            {neve:"Nivea",szarmazas:"Németország",ara:1800, keszletenE:false},
+            {neve:"Dove",szarmazas:"USA",ara:2600, keszletenE:true},
+            {neve:"Garnier",szarmazas:"Franciaország",ara:2300, keszletenE:false},
+            {neve:"BodyShop",szarmazas:"Anglia",ara:3100, keszletenE:true},
+            
+        ];
+
+        await testapolokcollection.insertMany(testapolok);
+        console.log('A testápolókcollekció beszúrása sikeres!');
+        
+
+
+
+
+
+
+
+
+
+    }catch(err){
+        console.error('Hiba a MongoDB-hez való csatlakozáskor!',err);
+
+    }finally{
+        await client.close();
+    }
+    
+
+
+}
+connectDB();

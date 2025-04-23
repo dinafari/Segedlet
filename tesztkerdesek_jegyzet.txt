@@ -1,0 +1,56 @@
+
+Tesztkérdések és helyes válaszok – Gyakorláshoz
+
+1. TypeScript: Mi a szerepe az interfészeknek TypeScript-ben?
+✔️ Meghatározzák az objektumok szerkezetét típusellenőrzéshez
+
+2. API: Mit jelent a REST rövidítés az API-k kapcsán?
+✔️ Representational State Transfer
+
+3. MongoDB: Melyik metódust használjuk új dokumentum beszúrására egy gyűjteménybe?
+✔️ insertOne()
+
+4. Git: Mit csinál a git add . parancs?
+✔️ Minden módosított fájlt hozzáad a staging area-hoz
+
+5. TypeScript: Mi történik, ha egy változónak megadunk egy típust, de később más típusú értéket próbálunk hozzárendelni?
+✔️ A program nem fut le, és fordítási hiba keletkezik
+
+6. API: Mit jelent az, hogy egy API „stateless”?
+✔️ Az API minden kérést azonos környezetben kezel, korábbi állapot nélkül
+
+7. MongoDB: Hogyan tudunk egyszerre több dokumentumot lekérdezni, amelyekben a kategoria mező "virág"?
+✔️ db.viragbolt.find({kategoria: "virág"})
+
+8. Git: Mit csinál a git commit -m "üzenet" parancs?
+✔️ A staging area tartalmát elmenti egy új commitként, az adott üzenettel
+
+9. Git: Mi a git status parancs szerepe?
+✔️ Megmutatja, hogy mely fájlok módosultak és melyek vannak a staging-ben
+
+10. Git: Mi történik, ha a git clone parancsot használod?
+✔️ Lemásolod egy meglévő repository tartalmát a gépedre
+
+11. MongoDB: Mit csinál a db.collection.updateOne() metódus?
+✔️ Frissíti az első találatot a megadott feltételek szerint
+
+12. API: Mit jelent az endpoint kifejezés egy API-nál?
+✔️ Egy URL, ahol elérhető egy konkrét API funkció
+
+13. TypeScript: Mi az any típus használatának veszélye?
+✔️ Elveszíthetjük a típusbiztonságot
+
+14. Git: Mit csinál a git log parancs?
+✔️ Megmutatja a commitok történetét
+
+15. MongoDB: Melyik operátorral tudunk több feltételt egyszerre használni egy lekérdezésben?
+✔️ $and
+
+16. API: Mit jelent a GET HTTP metódus?
+✔️ Adat lekérése
+
+17. Git: Mit jelent a -m kapcsoló a git commit parancsnál?
+✔️ Megjeleníti a commit üzenetet az -m részében
+
+18. TypeScript: Mire használható a readonly kulcsszó?
+✔️ A változó értékét csak egyszer lehet beállítani, utána nem módosítható

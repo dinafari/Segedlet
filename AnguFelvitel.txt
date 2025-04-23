@@ -1,0 +1,39 @@
+export class MotorfelviteleComponent {
+  rendszam:string = "";
+  gyarto:string = "";
+  tipus:string = "";
+  hengerurtartalom:number = 50;
+  uj:boolean = false;
+  megjegyzes:string = "";
+
+  motorok:Motor[] = [];
+
+  kattintas():void{
+    var motor:Motor = {
+      rendszam: this.rendszam,
+      gyarto: this.gyarto,
+      tipus: this.tipus,
+      hengerurtartalom: this.hengerurtartalom,
+      uj: this.uj,
+      megjegyzes: this.megjegyzes
+    };
+
+    this.motorok.push(motor);
+
+    this.rendszam = "";
+    this.gyarto = "";
+    this.tipus = "";
+    this.hengerurtartalom = 50;
+    this.uj = false;
+    this.megjegyzes = "";
+  }
+}
+
+export interface Motor{
+  rendszam:string;
+  gyarto:string;
+  tipus:string;
+  hengerurtartalom:number;
+  uj:boolean;
+  megjegyzes:string;
+}

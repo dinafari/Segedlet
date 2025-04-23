@@ -1,0 +1,182 @@
+# JavaScript Jegyzet
+
+## Mi az a JavaScript?
+
+A **JavaScript** egy magas szintű, dinamikusan típusos, objektumalapú programozási nyelv,
+amelyet főként weboldalak interaktív funkcióinak megvalósítására használnak. 
+Böngészőkben fut, de a Node.js segítségével a szerveroldalon is alkalmazható.
+
+## JavaScript Főbb Jellemzői
+
+- **Interaktív funkciók**: Dinamikus tartalom, űrlapellenőrzés, animációk.
+- **Platformfüggetlen**: Bármely modern böngésző támogatja.
+- **Objektumalapú**: Minden érték egy objektum vagy objektumhoz hasonló adattípus.
+- **Event-Driven**: Az eseménykezelésre (pl. kattintás, billentyűleütés) épít.
+
+## JavaScript Alapok
+
+### Változók Deklarálása
+
+Három kulcsszó használható változók deklarálására:
+
+- `var`: Globális vagy függvény szintű hatókör.
+- `let`: Blokkszintű hatókör, modern megoldás változókhoz.
+- `const`: Blokkszintű hatókör, értéke nem módosítható.
+
+```javascript
+var nev = "Anna";
+let kor = 30;
+const PI = 3.14;
+```
+
+### Alapvető Adattípusok
+
+- `string` – Szövegek tárolására.
+- `number` – Egész és lebegőpontos számok.
+- `boolean` – Igaz (`true`) vagy hamis (`false`).
+- `null` – Üres érték.
+- `undefined` – Érték nélküli változó.
+- `object` – Összetett adatszerkezet.
+- `array` – Tömb.
+
+```javascript
+let szoveg = "Hello";
+let szam = 42;
+let igaz = true;
+let ures = null;
+let nincsErtek;
+let tomb = [1, 2, 3];
+```
+
+### Operátorok
+
+- **Aritmetikai operátorok**: `+`, `-`, `*`, `/`, `%`, `**`
+- **Összehasonlító operátorok**: `==`, `===`, `!=`, `!==`, `>`, `<`, `>=`, `<=`
+- **Logikai operátorok**: `&&`, `||`, `!`
+
+```javascript
+let osszeg = 5 + 3; // 8
+let egyenlo = (5 === "5"); // false (szigorú egyenlőség)
+```
+
+## Függvények
+
+### Függvény deklarálása
+
+```javascript
+function osszead(a, b) {
+  return a + b;
+}
+
+console.log(osszead(5, 7)); // 12
+```
+
+### Arrow function (Nyílfüggvény)
+
+```javascript
+const osszead = (a, b) => a + b;
+console.log(osszead(3, 4)); // 7
+```
+
+### Függvény paraméterek és alapértelmezett értékek
+
+```javascript
+function koszontes(nev = "Vendég") {
+  console.log(`Szia, ${nev}!`);
+}
+
+koszontes(); // Szia, Vendég!
+```
+
+## Ciklusok
+
+### For ciklus
+
+```javascript
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+```
+
+### While ciklus
+
+```javascript
+let szam = 0;
+while (szam < 3) {
+  console.log(szam);
+  szam++;
+}
+```
+
+### For...of ciklus (tömbök bejárására)
+
+```javascript
+const szinek = ["piros", "zöld", "kék"];
+for (const szin of szinek) {
+  console.log(szin);
+}
+```
+
+### For...in ciklus (objektumok bejárására)
+
+```javascript
+const auto = { marka: "Audi", ev: 2020 };
+for (const kulcs in auto) {
+  console.log(`${kulcs}: ${auto[kulcs]}`);
+}
+```
+
+## JSON vs XML
+
+### JSON (JavaScript Object Notation)
+
+- Egyszerű, könnyen olvasható formátum.
+- Kisebb méret, gyorsabb feldolgozás.
+- Támogatja az alapvető típusokat: string, number, boolean, null, object, array.
+- Gyorsabb JavaScript-ben, mivel natívan támogatott.
+
+**Példa JSON-re:**
+
+```json
+{
+  "nev": "Anna",
+  "kor": 28,
+  "hobbik": ["futás", "olvasás"]
+}
+```
+
+### XML (Extensible Markup Language)
+
+- Bonyolultabb szintaxis, nehezebb feldolgozás.
+- Lassabb, nagyobb méret a címkék miatt.
+- Hierarchikus adatábrázolásra alkalmas.
+
+**Példa XML-re:**
+
+```xml
+<szemely>
+  <nev>Anna</nev>
+  <kor>28</kor>
+  <hobbik>
+    <hobbi>futás</hobbi>
+    <hobbi>olvasás</hobbi>
+  </hobbik>
+</szemely>
+```
+
+**Főbb különbségek:**
+
+| Jellemző     | JSON                        | XML                      |
+|--------------|-----------------------------|--------------------------|
+| Szintaxis    | Egyszerű, kulcs-érték pár   | Bonyolultabb, címkékkel |
+| Feldolgozás  | Gyorsabb                   | Lassabb                 |
+| Méret        | Kisebb                      | Nagyobb                 |
+| Típusok      | Primitív típusok támogatása | Csak szöveges adattípus |
+
+## Összegzés
+
+A JavaScript az egyik legnépszerűbb programozási nyelv a webfejlesztésben, 
+amely lehetőséget ad az interaktív és dinamikus weboldalak létrehozására. 
+Fontos ismerni az alapvető szintaxist, a DOM-kezelést, az eseménykezelést,
+valamint az aszinkron működés alapjait.
+

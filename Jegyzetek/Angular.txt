@@ -1,0 +1,214 @@
+# Angular Jegyzet
+
+## Mi az Angular?
+
+Az **Angular** egy nyílt forráskódú, TypeScript-alapú keretrendszer, amelyet a Google fejlesztett ki. Főként egyoldalas webalkalmazások (SPA) készítésére használják, és lehetőséget biztosít moduláris, könnyen karbantartható projektek létrehozására.
+
+### Angular Főbb Jellemzői
+
+- **TypeScript-alapú**: Statisztikusan típusos nyelv, amely bővíti a JavaScript képességeit.
+- **Komponensalapú**: Az alkalmazás kisebb, újrahasznosítható komponensekből épül fel.
+- **Moduláris felépítés**: Az alkalmazások modulokra bonthatók, megkönnyítve a kód szervezését.
+- **Kétirányú adatkö binding**: Automatikus szinkronizáció az adatok és a felhasználói felület között.
+- **CLI (Command Line Interface)**: Parancssori eszköz az alkalmazás gyors létrehozásához és kezeléséhez.
+
+## Angular Telepítése
+
+### 1. Node.js telepítése
+
+Győződj meg arról, hogy a Node.js telepítve van:
+
+```bash
+node -v
+npm -v
+```
+
+### 2. Angular CLI telepítése
+
+```bash
+npm install -g @angular/cli
+```
+
+### 3. Új Angular projekt létrehozása
+
+```bash
+ng new projekt-neve
+cd projekt-neve
+ng serve
+```
+
+## Angular Alapfogalmak
+
+### 1. Modulok (NgModule)
+
+Az Angular alkalmazások legalapvetőbb építőkövei. Minden Angular alkalmazásnak van egy gyökérmodulja (`AppModule`).
+
+```typescript
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent], // Komponensek
+  imports: [BrowserModule], // Külső modulok
+  providers: [], // Szolgáltatások
+  bootstrap: [AppComponent] // Gyökér komponens
+})
+export class AppModule {}
+```
+
+### 2. Komponensek (Component)
+
+A komponensek az Angular alkalmazás UI-elemei, amelyeket sablon (HTML), stílus (CSS) és logika (TypeScript) alkot.
+
+Példa egy komponens létrehozására:
+
+```bash
+ng generate component pelda
+```
+
+Struktúra:
+
+- `pelda.component.ts` – Komponens logika
+- `pelda.component.html` – HTML sablon
+- `pelda.component.css` – Stílusok
+- `pelda.component.spec.ts` – Tesztfájl
+
+Példa egy egyszerű komponensre:
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-pelda',
+  template: `<h1>{{ uzenet }}</h1>`,
+  styleUrls: ['./pelda.component.css']
+})
+export class PeldaComponent {
+  uzenet: string = 'Üdv az Angular világában!';
+}
+```
+
+### 3. Adatkötés (Data Binding)
+
+- **Interpoláció (`{{ }}`)**: Változók beillesztése a HTML-be.
+- **Property Binding (`[property]`)**: HTML attribútumok kötése a változókhoz.
+- **Event Binding (`(event)`)**: Események figyelése (pl. kattintás).
+- **Kétirányú adatkötés Two-way binding (`[(ngModel)]`)**: Az adatok és a UI szinkronizálása.
+
+Példa:
+
+```typescript
+export class AppComponent {
+  szoveg: string = 'Hello Angular!';
+
+  valtoztat(): void {
+    this.szoveg = 'Módosított szöveg!';
+  }
+}
+```
+
+```html
+<h1>{{ szoveg }}</h1>
+<button (click)="valtoztat()">Módosít</button>
+
+<input [(ngModel)]="szoveg" placeholder="Írj be valamit" />
+```
+
+### 4. Direktívák
+
+A direktívák speciális utasítások a DOM manipulálására vagy dinamikus viselkedések létrehozására.
+
+- **Strukturális direktívák**: `*ngIf`, `*ngFor`
+- **Attribútum direktívák**: `[ngClass]`, `[ngStyle]`
+
+Példa `*ngFor` használatára:
+
+```typescript
+export class AppComponent {
+  lista = ['Alma', 'Körte', 'Banán'];
+}
+```
+
+```html
+<ul>
+  <li *ngFor="let gyumolcs of lista">{{ gyumolcs }}</li>
+</ul>
+```
+
+### 5. Szolgáltatások (Services) és Injektálás
+
+A szolgáltatásokat logika és adatok megosztására használják különböző komponensek között. Az `@Injectable()` dekorátorral hozunk létre szolgáltatásokat.
+
+Szolgáltatás létrehozása:
+
+```bash
+ng generate service adat
+```
+
+Példa szolgáltatásra:
+
+```typescript
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class AdatService {
+  getAdatok() {
+    return ['Adat1', 'Adat2', 'Adat3'];
+  }
+}
+```
+
+Használata egy komponensben:
+
+```typescript
+import { Component } from '@angular/core';
+import { AdatService } from './adat.service';
+
+@Component({
+  selector: 'app-adatok',
+  template: '<p *ngFor="let adat of adatok">{{ adat }}</p>'
+})
+export class AdatokComponent {
+  adatok: string[] = [];
+
+  constructor(private adatService: AdatService) {
+    this.adatok = this.adatService.getAdatok();
+  }
+}
+```
+
+### 6. Időzítő Függvények (setTimeout, setInterval)
+
+Az Angular alkalmazásokban a `setTimeout` és `setInterval` segítségével időzített műveleteket hajthatunk végre.
+
+Példa `setTimeout` használatára:
+
+```typescript
+export class TimerComponent {
+  uzenet: string = 'Várj egy pillanatot...';
+
+  constructor() {
+    setTimeout(() => {
+      this.uzenet = 'Eltelt 3 másodperc!';
+    }, 3000);
+  }
+}
+```
+
+Példa `setInterval` használatára:
+
+```typescript
+export class CounterComponent {
+  szamlalo: number = 0;
+
+  constructor() {
+    setInterval(() => {
+      this.szamlalo++;
+    }, 1000);
+  }
+}
+```
+
+Ez a jegyzet az Angular alapvető funkcióit és használatát mutatja be. 
+

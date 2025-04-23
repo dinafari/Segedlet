@@ -1,0 +1,72 @@
+<div class="container my-4">
+    <div class="row">
+        <div class="col-12">
+            <h1>Motor feltoltese</h1>
+        </div>
+    </div>
+
+    <form class="row">
+        <div class="col-12 col-md-6 my-2 form-group">
+            <label class="form-label" for="rendszam">Rendszam</label>
+            <input [(ngModel)]="rendszam" placeholder="AABB111" class="form-control" type="text" name="rendszam" id="rendszam">
+        </div>
+
+        <div class="col-12 col-md-6 my-2 form-group">
+            <label class="form-label" for="gyarto">Gyarto</label>
+            <input [(ngModel)]="gyarto" placeholder="Suzuki" class="form-control" type="text" name="gyarto" id="gyarto">
+        </div>
+
+        <div class="col-12 col-md-6 my-2 form-group">
+            <label class="form-label" for="tipus">Tipus</label>
+            <input [(ngModel)]="tipus" placeholder="GSX-R 600" class="form-control" type="text" name="tipus" id="tipus">
+        </div>
+
+        <div class="col-12 col-md-6 my-2 form-group">
+            <label class="form-label" for="hengerurtartalom">Hengerurtartalom</label>
+            <input [(ngModel)]="hengerurtartalom" class="form-control" type="number" name="hengerurtartalom" id="hengerurtartalom" min="50">
+        </div>
+
+        <div class="col-12 my-2 form-group">
+            <label class="form-label" for="megjegyzes">Megjegyzes</label>
+            <textarea [(ngModel)]="megjegyzes" placeholder="Megjegyzes" class="form-control" name="megjegyzes" id="megjegyzes" rows="10"></textarea>
+        </div>
+
+        <div class="col-12 my-2 form-group">
+            <input [(ngModel)]="uj" class="form-check-input" type="checkbox" name="uj" id="uj">
+            <label class="form-check-label" for="uj">Uj</label>
+        </div>
+
+        <div class="col-12">
+            <button (click)="kattintas()" type="button" class="btn btn-primary">Feltoltes</button>
+        </div>
+    </form>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Rendszam</th>
+                        <th>Gyarto</th>
+                        <th>Tipus</th>
+                        <th>Hengerurtartalom</th>
+                        <th>Megjegyzes</th>
+                        <th>Uj</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let motor of motorok">
+                        <td>{{motor.rendszam}}</td>
+                        <td>{{motor.gyarto}}</td>
+                        <td>{{motor.tipus}}</td>
+                        <td>{{motor.hengerurtartalom}}</td>
+                        <td>{{motor.megjegyzes}}</td>
+                        <td>{{(motor.uj) ? "igen" : "nem"}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
